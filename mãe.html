@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Dia das Mães!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ffe6e6, #ffe0f0);
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .tela {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .ativa {
+      display: block;
+    }
+
+    h1 {
+      color: #e60073;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .botao {
+      background-color: #e60073;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #cc0066;
+    }
+
+    /* Estilos dos corações */
+    .coracao {
+      position: fixed;
+      top: -30px;
+      font-size: 2em;
+      animation: cair 5s linear infinite;
+      color: #ff4da6;
+      pointer-events: none;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tela Inicial -->
+  <div id="tela-inicial" class="tela ativa">
+    <h1>Olá, Mãe! 👩‍👧‍👦</h1>
+    <p>Tenho uma mensagem especial pra você... 💖</p>
+    <button class="botao" onclick="mostrarMensagem()">Clique aqui para ver</button>
+  </div>
+
+  <!-- Tela da Mensagem -->
+  <div id="tela-mensagem" class="tela">
+    <div class="card">
+      <h1>Feliz Dia das Mães! 💐</h1>
+      <p>Querida mãe,<br>
+      Hoje é o seu dia, mas todo dia é dia das mães.<br>
+      Te amo com todo o meu coração! ❤️</p>
+      <p>Com amor,<br>Seu filho João Felipe</p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById("tela-inicial").classList.remove("ativa");
+      document.getElementById("tela-mensagem").classList.add("ativa");
+      iniciarCoracoes();
+    }
+
+    function iniciarCoracoes() {
+      setInterval(() => {
+        const coracao = document.createElement('div');
+        coracao.classList.add('coracao');
+        coracao.innerText = '💖';
+        coracao.style.left = Math.random() * 100 + 'vw';
+        coracao.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        document.body.appendChild(coracao);
+
+        setTimeout(() => {
+          coracao.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
